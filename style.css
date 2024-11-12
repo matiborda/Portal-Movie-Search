@@ -1,0 +1,246 @@
+/* Fuente y Reset CSS */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* Fondo de cartelera de películas */
+body {
+  background-image: url('fondo.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  filter: brightness(0.5);
+  margin: 0; /* Asegura que no haya márgenes */
+}
+
+/* Encabezado y barra de búsqueda */
+header {
+  width: 100%;
+  padding: 20px 10%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid #333;
+}
+
+header h1 {
+    color: #D3D3D3; /* Color plateado */
+    font-size: 2em;
+    margin-right: auto;
+    font-weight: 600;
+    text-align: center;
+    position: relative;
+    animation: ledEffect 2s infinite alternate; /* Efecto LED platinado */
+    text-shadow: 0 0 10px #fff; /* Brillo alrededor de las letras */
+}
+
+/* Input de búsqueda */
+#search-input {
+  padding: 12px;
+  font-size: 1em;
+  width: 50%;
+  max-width: 400px;
+  margin: 0 10px;
+  border: 1px solid #333;
+  border-radius: 5px;
+  background-color: #222;
+  color: #959595;
+}
+
+/* Botón de búsqueda plateado */
+#search-button {
+  padding: 14px 24px;
+  font-size: 1.2em;
+  background-color: #D3D3D3; /* Color plateado */
+  color: #000000;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+#search-button:hover {
+  background-color: #A9A9A9; /* Gris oscuro para el hover */
+  transform: scale(1.1);
+}
+
+/* Contenedor de resultados de películas */
+#movie-results {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  width: 90%;
+  max-width: 1200px;
+  margin-top: 20px;
+}
+
+/* Tarjeta de película */
+.movie {
+  background-color: #222;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.7);
+}
+
+.movie img {
+  width: 100%;
+  display: block;
+  border-bottom: 3px solid #444;
+}
+
+.movie h3 {
+  font-size: 1em;
+  padding: 10px;
+  text-align: center;
+  color: #ffffff;
+  font-weight: 400;
+}
+
+.movie:hover {
+  transform: scale(1.05);
+}
+
+/* Estilos del Modal */
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  max-width: 600px;
+  max-height: 80vh; /* Limitar altura para pantallas pequeñas */
+  overflow-y: auto; /* Habilitar desplazamiento si el contenido es extenso */
+  background-color: rgba(20, 20, 20, 0.95);
+  border-radius: 10px;
+  color: #ffffff;
+  z-index: 1000;
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
+  animation: fadeIn 0.3s ease;
+}
+
+.modal-content {
+  text-align: center;
+  position: relative;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 1.5em;
+  color: #D3D3D3; /* Color plateado */
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.close-button:hover {
+  color: #fafafa; /* Rojo para hover */
+}
+
+.modal-content h2 {
+  color: #D3D3D3; /* Tono platinado */
+  font-size: 2em;
+  margin-bottom: 15px;
+  font-weight: 700;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7); /* Sombra para mejorar la visibilidad */
+}
+
+.modal-content p {
+  font-size: 1.1em;
+  line-height: 1.6;
+  margin-bottom: 15px;
+  color: #D3D3D3;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.modal-content p strong {
+  color: #ffffff; /*  títulos importantes */
+  font-weight: 600;
+}
+
+.modal-content img {
+  width: 100%;
+  max-width: 100%; /* Asegurarse que la imagen no salga del modal */
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+/* Animación de aparición */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Media Queries para Responsividad */
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 1.5em;
+  }
+
+  #search-input {
+    width: 60%;
+  }
+
+  #search-button {
+    padding: 12px 18px;
+    font-size: 1em;
+  }
+
+  #movie-results {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  }
+
+  .modal {
+    max-width: 90%;
+  }
+
+  .modal-content h2 {
+    font-size: 1.6em;
+  }
+
+  .modal-content p {
+    font-size: 1em;
+  }
+}
+
+@media (max-width: 480px) {
+  header h1 {
+    font-size: 1.2em;
+  }
+
+  #search-input {
+    width: 70%;
+  }
+
+  #search-button {
+    padding: 10px 16px;
+    font-size: 0.9em;
+  }
+
+  #movie-results {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  }
+
+  .modal-content h2 {
+    font-size: 1.4em;
+  }
+
+  .modal-content p {
+    font-size: 0.9em;
+  }
+}
+
